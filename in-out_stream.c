@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "pdp.h"
-
+#include <stdlib.h>
 
 void load_data(FILE *stream)
 {
@@ -31,7 +31,10 @@ void load_file(const char* filename)
 {
 	FILE *stream = fopen(filename, "r");
 	if(stream == NULL)
+	{
 		perror("Error: can't open file");
+		exit(1);
+	}
 	load_data(stream);
 	fclose(stream);
 }

@@ -1,7 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "pdp.h"
+#include "in-out_stream.h"
 
 
-int main()
+
+char *get_filename(int argc, char *arg_v[])
 {
-	printf("he");
+	for (int i = 0; i < argc; i++)
+		if(strcmp(arg_v[i], "-t") == 0)
+			return arg_v[i+1];
+	return NULL;
+}
+
+
+int main(int argc, char *arg_v[])
+{
+	if(argc <= 1)
+	{
+		perror("Enter a filename after -t flag");
+		exit(1);
+	}
+	char *filename = get_filename(argc, arg_v);
+	printf("%s\n", filename); 
+	load_file(filename);
+	mem_dump(stderr, 0, 20);
 	return 0;
 }
