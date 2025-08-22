@@ -6,7 +6,12 @@
 *.ko
 *.obj
 *.elf
-
+*.exe
+*.app
+*.so
+*.dll
+*.a
+*.lib
 # Linker output
 *.ilk
 *.map
