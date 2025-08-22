@@ -2,8 +2,8 @@
 
 
 
-typedef unsigned byte char;
-typedef unsigned short int word;
+typedef unsigned char byte;
+typedef unsigned short word;
 typedef word Address;
 
 byte b_read(Address a);
