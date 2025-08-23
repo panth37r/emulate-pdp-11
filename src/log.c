@@ -1,22 +1,19 @@
-#pragma once
-
 #include <stdio.h>
 #include <stdarg.h>
+#include "log.h"
 
-enum log_levels  {ERROR, INFO, TRACE, DEBUG};
-
-typedef enum log_levels log_levels;
 
 log_levels global_log_level = TRACE;
 
 void trace(log_levels level, char *format, ...)
 {
-	if(level >= global_log_level)
+	if(level <= global_log_level)
 	{
 		va_list args;
 
 		va_start(args, format);
 		vprintf(format, args);
+		putchar('\n');	
 		va_end(args);
 	}
 }
