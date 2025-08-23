@@ -1,8 +1,11 @@
-#include <stdio.h>
-#include "pdp.h"
+#include <stdio.h> 
+#include "in-out_stream.h"
+
 #define MEMSIZE (64*1024)
+#define REGCOUNT 8
 
 static word mem[MEMSIZE];
+static word reg[REGCOUNT];
 
 void b_write(Address a, byte value)
 {

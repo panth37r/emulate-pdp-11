@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "pdp.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 void load_data(FILE *stream)
