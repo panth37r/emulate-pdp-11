@@ -1,17 +1,32 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include "in-out_stream.h"
-#include "pdp.h"
+#include "pdp_mem.h"
 #include "log.h"
 
 #define MEMSIZE (64*1024)
-
+#define pc reg[7]
 
 typedef enum {MOV, ADD, HALT, UNKNOWN} mnem;
 static word mem[MEMSIZE];
 word reg[REGCOUNT];
 
 
+word inc_pc()
+{
+	pc = pc + 2; // po idee nujno inc na 1 a ne na 2 no tipo poh
+	return pc;
+}
+
+void set_pc(word value)
+{
+	pc = value;
+}
+
+word get_pc()
+{
+	return pc;
+}
 
 void b_write(Address a, byte value)
 {
@@ -56,31 +71,7 @@ word w_read(Address a)
 	return mem[a];
 }
 
-mnem check_mnem(mnem value)
-{
-	
-}
-
-void run()
-{
-	pc = 1000;
-	word w;
-	while(1)
-	{
-		w = w_read(pc);
-		trace(TRACE, "06o 06o: ", pc, w);
-		pc += 2;
-	}
-}
-
-void do_halt()
-{
-	trace(INFO, "THE END !\n");
-	exit(0);
-}
 
 
 
-void do_add();
-void do_mov();
-void do_nothing();
+
